@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: homework-manifests
+build:
+  artifacts:
+    - image: homework_2
+      context: ../homework_2
+deploy:
+  kubectl:
+    manifests:
+    - Deployment.yaml
+    - Ingress.yaml
+    - Service.yaml

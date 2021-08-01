@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: homework-1-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: homework-1-app
+  template:
+      metadata:
+         labels:
+            app: homework-1-app
+      spec:
+         containers:
+         - name: homework-1
+           image: homework_2
+           ports:
+             - name: web
+               containerPort: 8000
+           livenessProbe:
+             httpGet:
+               path: /health
+               port: 8000
+             initialDelaySeconds: 3
+             periodSeconds: 3
