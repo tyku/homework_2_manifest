@@ -18,6 +18,12 @@ spec:
            ports:
              - name: web
                containerPort: 8000
+           env:
+             - name: DATABASE_URI
+               valueFrom:
+                 secretKeyRef:
+                   name: homework-2-secret
+                   key: DATABASE_URI
            livenessProbe:
              httpGet:
                path: /health
